@@ -49,7 +49,7 @@ int test_discount(Product products[],
 			products_category[index],
 			products_price[index] };
 		list_of_products = add_new_product_to_end_of_list(&list_of_products,
-			products[index]);
+															products[index]);
 	}
 
 	if (NULL == list_of_products) {
@@ -73,4 +73,56 @@ int test_discount(Product products[],
 	free_product_list(list_of_products);
 
 	return SUCCESS;
+}
+
+int main() {
+	/**
+	* @brief  initiate arrays of product features and
+	*		  fill the list with products, discount each product with the
+	*		  corresponding discount, and print the results
+	* @param  OUT FAIL if there was an error of memory allocation,
+	*		  otherwise returb SUCCESS
+	* @return FAIL if there was an error of memory allocation,
+	*		  otherwise return SUCCESS
+	* @note   test_discount() call add_new_product_to_end_of_list() that allocate
+	*		  memory for the list, and call free_product_list() that free the
+	*		  allocated memory for the list
+	* @author  Liri
+	*/
+	Product products[NUMBER_OF_PRODUCTS];
+
+	const char *products_name[] = { "white bread",
+									"orange juice",
+									"carrot",
+									"apple",
+									"banana",
+									"white meat" };
+
+	/*category corresponding to each name in products*/
+	CATEGORY products_category[] = { BREAD,
+										DRINK,
+										VEGETABLES,
+										FRUITS,
+										FRUITS,
+										MEAT };
+	/*price of each product*/
+	double products_price[] = { 30,
+								13,
+								6,
+								7,
+								10,
+								100 };
+
+	/*discount of each category*/
+	double discount_categories[NUMBER_OF_CATEGORIES] = { 10,
+														20,
+														15,
+														30,
+														5 };
+
+	return test_discount(products,
+							products_name,
+							products_category,
+							products_price,
+							discount_categories);
 }
