@@ -62,7 +62,7 @@ int test_discount(Product products[],
 	}
 
 	/*discount the products*/
-	list_of_products = discount_product(&list_of_products,
+	list_of_products = discount_products(&list_of_products,
 		discount_category);
 
 	/*print the products*/

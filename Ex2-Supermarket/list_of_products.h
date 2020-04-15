@@ -41,7 +41,7 @@ Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
 * @author  Liri
 */
 
-Product_List* discount_product(Product_List** list_of_products,
+Product_List* discount_products(Product_List** list_of_products,
 								std::map<CATEGORY,
 	double> discount_category);
 /**
