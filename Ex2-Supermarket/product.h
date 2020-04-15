@@ -15,3 +15,10 @@ typedef enum {
 	FRUITS,
 	MEAT
 }CATEGORY;
+
+/*structure that contain the product features (name, category, price)*/
+typedef struct product {
+	const char* name;
+	CATEGORY category;
+	double price;
+}Product;
