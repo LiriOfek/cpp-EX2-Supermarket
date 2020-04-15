@@ -6,3 +6,13 @@ Purpose: This file contain the structure of list of products,
 		 products, discount the price of the products and print
 		 the products
 \********************************************************/
+
+#pragma once
+
+#include "product.h"
+
+/*structure that contain node in list of products*/
+typedef struct list {
+	Product product;
+	list* next;
+}Product_List;
