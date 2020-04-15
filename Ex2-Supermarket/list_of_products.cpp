@@ -38,3 +38,20 @@ Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
 	}
 	return *list_of_products;
 }
+
+Product_List* discount_product(Product_List** list_of_products,
+	std::map<CATEGORY, double> discount_category) {
+
+	Product_List* current_node;
+	double discount = 0;
+
+	current_node = *list_of_products;
+
+	while (NULL != current_node) {
+		/*reduce the product price according to the discount*/
+		discount = (HUNDRED - discount_category[current_node->product.category]) / HUNDRED;
+		current_node->product.price *= discount;
+		current_node = current_node->next;
+	}
+	return *list_of_products;
+}
