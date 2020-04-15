@@ -6,6 +6,8 @@ Purpose: This file test functions in list_of_products.cpp,
 		 results
 \********************************************************/
 
+#include "list_of_products.h"
+
 const unsigned int NUMBER_OF_PRODUCTS = 6;
 const unsigned int NUMBER_OF_CATEGORIES = 5;
 
@@ -14,15 +16,11 @@ enum {
 	FAIL
 };
 
-#include "list_of_products.h"
-
-#include "list_of_products.h"
-
 int test_discount(Product products[],
-	const char *products_name[],
-	CATEGORY products_category[],
-	double products_price[],
-	double discount_categories[]) {
+					const char *products_name[],
+					CATEGORY products_category[],
+					double products_price[],
+					double discount_categories[]) {
 	/**
 	* @brief  fill the list with products, discount each product with the
 	*		  corresponding discount, and print the results
