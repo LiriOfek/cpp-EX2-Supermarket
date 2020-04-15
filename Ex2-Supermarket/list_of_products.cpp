@@ -4,3 +4,37 @@ Author: Liri (15/4/2020)
 Purpose: This file contain the funcions that add node to list of products,
 		 discount the price of the products and print the products
 \********************************************************/
+
+#include "list_of_products.h"
+
+Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
+	Product new_product) {
+	Product_List* new_node;
+	Product_List* current_node;
+
+	new_node = (Product_List*)malloc(sizeof(Product_List));
+	if (NULL == new_node) {
+		printf(ERROR_MEMORY_ALLOCATION_FAILED);
+		return NULL;
+	}
+
+	new_node->product = new_product;
+	new_node->next = NULL;
+
+	if (NULL == *list_of_products)
+	{
+		return new_node;
+	}
+
+	else
+	{
+		/*add the new node in the end of the list*/
+		current_node = *list_of_products;
+		while (NULL != current_node->next)
+		{
+			current_node = current_node->next;
+		}
+		current_node->next = new_node;
+	}
+	return *list_of_products;
+}
