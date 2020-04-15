@@ -24,7 +24,7 @@ typedef struct list {
 }Product_List;
 
 Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
-	Product new_product);
+												Product new_product);
 /**
 * @brief  add new product to the end of the list
 * @param  IN Product_List** list_of_products - pointer to pointer to the
@@ -40,7 +40,7 @@ Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
 */
 
 Product_List* discount_product(Product_List** list_of_products,
-	std::map<CATEGORY,
+								std::map<CATEGORY,
 	double> discount_category);
 /**
 * @brief  discount each product price according to the discount of
@@ -53,5 +53,16 @@ Product_List* discount_product(Product_List** list_of_products,
 *		  products
 * @return pointer to the list of products after discount each product in
 *		  the list according to the discount in the discount_category
+* @author  Liri
+*/
+
+void free_product_list(Product_List* list_of_products);
+/**
+* @brief  free each node in the list of the products
+* @param  IN Product_List* list_of_products - pointer to the list of
+*		  products
+* @return this function has no return value
+* @note   the function free allocated memory for each node in the list
+*		  of the products
 * @author  Liri
 */

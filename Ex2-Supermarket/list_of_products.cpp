@@ -8,7 +8,7 @@ Purpose: This file contain the funcions that add node to list of products,
 #include "list_of_products.h"
 
 Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
-	Product new_product) {
+												Product new_product) {
 	Product_List* new_node;
 	Product_List* current_node;
 
@@ -40,7 +40,7 @@ Product_List* add_new_product_to_end_of_list(Product_List** list_of_products,
 }
 
 Product_List* discount_product(Product_List** list_of_products,
-	std::map<CATEGORY, double> discount_category) {
+								std::map<CATEGORY, double> discount_category) {
 
 	Product_List* current_node;
 	double discount = 0;
@@ -54,4 +54,15 @@ Product_List* discount_product(Product_List** list_of_products,
 		current_node = current_node->next;
 	}
 	return *list_of_products;
+}
+
+void free_product_list(Product_List* list_of_products) {
+	Product_List* tmp;
+
+	while (NULL != list_of_products)
+	{
+		tmp = list_of_products;
+		list_of_products = list_of_products->next;
+		free(tmp);
+	}
 }
