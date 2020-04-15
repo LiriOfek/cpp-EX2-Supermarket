@@ -66,3 +66,17 @@ void free_product_list(Product_List* list_of_products) {
 		free(tmp);
 	}
 }
+
+void print_list_of_products(Product_List* list_of_products) {
+
+	Product_List* current_node;
+	current_node = list_of_products;
+	while (NULL != current_node) {
+		std::cout << current_node->product.name
+			<< PRINT_COST
+			<< current_node->product.price
+			<< DOLLAR
+			<< std::endl;
+		current_node = current_node->next;
+	}
+}

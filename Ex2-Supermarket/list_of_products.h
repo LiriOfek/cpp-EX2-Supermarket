@@ -16,6 +16,8 @@ Purpose: This file contain the structure of list of products,
 
 const char* const ERROR_MEMORY_ALLOCATION_FAILED = "Error! memory allocation failed.\n";
 const unsigned int HUNDRED = 100;
+const char* const PRINT_COST = " costs ";
+const char* const DOLLAR = "$";
 
 /*structure that contain node in list of products*/
 typedef struct list {
@@ -64,5 +66,15 @@ void free_product_list(Product_List* list_of_products);
 * @return this function has no return value
 * @note   the function free allocated memory for each node in the list
 *		  of the products
+* @author  Liri
+*/
+
+void print_list_of_products(Product_List* list_of_products);
+/**
+* @brief  print the name and the price of each product in the list
+*		  of the products
+* @param  IN Product_List* list_of_products - pointer to the list of
+*		  products
+* @return this function has no return value
 * @author  Liri
 */
