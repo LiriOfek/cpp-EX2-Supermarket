@@ -117,7 +117,7 @@ int main() {
 														15,
 														30,
 														5 };
-
+	/*test*/
 	return test_discount(products,
 							products_name,
 							products_category,
