@@ -18,15 +18,15 @@
     <ClInclude Include="product.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="list_of_products.h">
+    <ClInclude Include="discount_product.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="list_of_products.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="discount_product.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

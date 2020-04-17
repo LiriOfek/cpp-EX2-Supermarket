@@ -119,11 +119,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="list_of_products.h" />
+    <ClInclude Include="discount_product.h" />
     <ClInclude Include="product.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="list_of_products.cpp" />
+    <ClCompile Include="discount_product.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
