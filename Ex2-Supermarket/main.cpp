@@ -1,0 +1,146 @@
+/********************************************************\
+File Name: main.cpp
+Author: Liri (17/4/2020)
+Purpose: This file fill vector of products with products,
+		 discount each product corresponding to the biggest discount
+		 category it belongs to, and print the products that in the
+		 vector after the discount
+\********************************************************/
+
+#include "discount_product.h"
+
+const unsigned int NUMBER_OF_PRODUCTS = 6;
+const unsigned int NUMBER_OF_CATEGORIES = 5;
+
+enum {
+	SUCCESS,
+	FAIL
+};
+
+void fill_products_vector(const char *products_name[],
+							vector<vector<CATEGORY>> products_categories,
+							double products_price[],
+							std::vector<Product> &products_vector) {
+	/**
+	* @brief  fill the products vector with products contain name,
+	*		  category and price
+	* @param  IN const char *products_name[] - the array of products names
+	*		  IN vector<vector<CATEGORY>> products_categories - matrix
+	*		  that each row represents the categories that belong to each
+	*		  product
+	*		  IN double products_price[] - the array of prices that
+	*		  corresponding to the names
+	*		  INOUT std::vector<Product> &products_vector - the vector of
+	*		  products
+	* @notes  the vector of products changed such that added into it
+	*		  the new products
+	* @return this function has no return value
+	* @author  Liri
+	*/
+	for (int index = 0; index < NUMBER_OF_PRODUCTS; ++index) {
+		products_vector.push_back({ products_name[index],
+			products_categories[index],
+			products_price[index] });
+	}
+}
+
+void print_products(std::vector<Product> products_vector) {
+	/**
+	* @brief  print the products that in the vector of products
+	* @param  IN std::vector<Product> products_vector - the vector of products
+	* @return this function has no return value
+	* @author  Liri
+	*/
+	for (product n : products_vector) {
+		std::cout << n.name
+			<< PRINT_COST
+			<< n.price
+			<< DOLLAR
+			<< std::endl;
+	}
+}
+
+void fill_discount_map(std::map<CATEGORY, double> &discount_category_map,
+						double discount_categories[]) {
+	/**
+	* @brief  fill the dicount map with pairs of the category and the
+	*		  corresponding discount
+	* @param  INOUT std::map<CATEGORY, double> &discount_category_map - the
+	*		  map of the pairs of category and corresponding discount
+	*		  double discount_categories[] - the array of discounts that
+	*		  corresponding to the names
+	* @notes  the map of discounts changed such that added into it
+	*		  the pairs of category and corresponding discount
+	* @return this function has no return value
+	* @author  Liri
+	*/
+	for (int index = 0; index < NUMBER_OF_CATEGORIES; ++index) {
+		discount_category_map.insert(std::make_pair((CATEGORY)index,
+			discount_categories[index]));
+	}
+}
+
+int main() {
+	/**
+	* @brief  initiate arrays of product features and
+	*		  fill the list with products, discount each product with the
+	*		  corresponding discount, and print the results
+	* @param  OUT FAIL if there was an error of memory allocation,
+	*		  otherwise returb SUCCESS
+	* @return FAIL if there was an error of memory allocation,
+	*		  otherwise return SUCCESS
+	* @author  Liri
+	*/
+
+	const char *products_name[] = { "white bread",
+									"orange juice",
+									"tomato",
+									"apple",
+									"soup",
+									"white meat" };
+
+	/*matrix of categories, such that each row represents the categories
+	that each product belongs to*/
+	vector<vector<CATEGORY>> products_category{ { BREAD },
+												{ DRINK, FRUITS },
+												{ VEGETABLES, FRUITS },
+												{ FRUITS },
+												{ VEGETABLES, DRINK, MEAT },
+												{ MEAT } };
+
+	/*price of each product*/
+	double products_price[] = { 30,
+								13,
+								6,
+								7,
+								50,
+								100 };
+
+	/*discount of each category, in percents*/
+	double discount_categories[] = { 10,
+										20,
+										0,
+										30,
+										5 };
+
+	std::vector<Product> products_vector;
+	std::map<CATEGORY, double> discount_category_map;
+
+	/*fill vector with product features (names, categories and prices)*/
+	fill_products_vector(products_name,
+							products_category,
+							products_price,
+							products_vector);
+
+	/*fill map of discounts corresponding to the category*/
+	fill_discount_map(discount_category_map,
+						discount_categories);
+
+	/*discount the price of product according to the category it belongs*/
+	discount_products(products_vector,
+						discount_category_map);
+
+	/*print the product name and the price after discount*/
+	print_products(products_vector);
+
+}
