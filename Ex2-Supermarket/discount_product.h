@@ -18,7 +18,7 @@ const char* const PRINT_COST = " costs ";
 const char* const DOLLAR = "$";
 const unsigned int HUNDRED = 100;
 
-void discount_product(std::vector<Product> &products_vector,
+void discount_products(std::vector<Product> &products_vector,
 						std::map<CATEGORY, double> discount_category_map);
 /**
 * @brief  discount each product according to the category that has

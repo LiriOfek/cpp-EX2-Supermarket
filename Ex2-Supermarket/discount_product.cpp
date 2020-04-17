@@ -7,7 +7,7 @@ Purpose: This file discount each product according to the biggest dicount
 
 #include "discount_product.h"
 
-void discount_product(std::vector<Product> &products_vector,
+void discount_products(std::vector<Product> &products_vector,
 						std::map<CATEGORY, double> discount_category_map) {
 	double relative_part_of_price = 0;
 	double biggest_discount;

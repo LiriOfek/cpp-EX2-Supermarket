@@ -137,7 +137,7 @@ int main() {
 						discount_categories);
 
 	/*discount the price of product according to the category it belongs*/
-	discount_product(products_vector,
+	discount_products(products_vector,
 						discount_category_map);
 
 	/*print the product name and the price after discount*/
