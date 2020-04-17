@@ -7,6 +7,8 @@ Purpose: This file contain the structure of the producet,
 
 #pragma once
 
+#include <vector>
+
 /*enum structute of categories of products*/
 typedef enum {
 	BREAD,
@@ -16,9 +18,9 @@ typedef enum {
 	MEAT
 }CATEGORY;
 
-/*structure that contain the product features (name, category, price)*/
+/*structure that contain the product features (name, categories, price)*/
 typedef struct product {
 	const char* name;
-	CATEGORY category;
+	std::vector<CATEGORY> categories_vector;
 	double price;
 }Product;
