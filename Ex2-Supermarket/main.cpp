@@ -17,9 +17,9 @@ enum {
 	FAIL
 };
 void fill_products_vector(const char *products_name[],
-	CATEGORY products_category[],
-	double products_price[],
-	std::vector<Product> &products_vector) {
+							CATEGORY products_category[],
+							double products_price[],
+							std::vector<Product> &products_vector) {
 	/**
 	* @brief  fill the products vector with products contain name,
 	*		  category and price
@@ -58,6 +58,26 @@ void print_products(std::vector<Product> products_vector) {
 	}
 }
 
+void fill_discount_map(std::map<CATEGORY, double> &discount_category_map,
+						double discount_categories[]) {
+	/**
+	* @brief  fill the dicount map with pairs of the category and the
+	*		  corresponding discount
+	* @param  INOUT std::map<CATEGORY, double> &discount_category_map - the
+	*		  map of the pairs of category and corresponding discount
+	*		  double discount_categories[] - the array of discounts that
+	*		  corresponding to the names
+	* @notes  the map of discounts changed such that added into it
+	*		  the pairs of category and corresponding discount
+	* @return this function has no return value
+	* @author  Liri
+	*/
+	for (int index = 0; index < NUMBER_OF_CATEGORIES; ++index) {
+		discount_category_map.insert(std::make_pair((CATEGORY)index,
+										discount_categories[index]));
+	}
+}
+
 int main() {
 	/**
 	* @brief  initiate arrays of product features and
@@ -71,42 +91,50 @@ int main() {
 	*/
 
 	const char *products_name[] = { "white bread",
-		"orange juice",
-		"carrot",
-		"apple",
-		"banana",
-		"white meat" };
+									"orange juice",
+									"carrot",
+									"apple",
+									"banana",
+									"white meat" };
 
 	/*category corresponding to each name in products*/
 	CATEGORY products_category[] = { BREAD,
-		DRINK,
-		VEGETABLES,
-		FRUITS,
-		FRUITS,
-		MEAT };
+										DRINK,
+										VEGETABLES,
+										FRUITS,
+										FRUITS,
+										MEAT };
 	/*price of each product*/
 	double products_price[] = { 30,
-		13,
-		6,
-		7,
-		10,
-		100 };
+								13,
+								6,
+								7,
+								10,
+								100 };
 
 	/*discount of each category, in percents*/
 	double discount_categories[] = { 10,
-		20,
-		15,
-		30,
-		5 };
+										20,
+										0,
+										30,
+										5 };
 
 	std::vector<Product> products_vector;
 	std::map<CATEGORY, double> discount_category_map;
 
 	/*fill vector with product features (names, categories and prices)*/
 	fill_products_vector(products_name,
-		products_category,
-		products_price,
-		products_vector);
+							products_category,
+							products_price,
+							products_vector);
+
+	/*fill map of discounts corresponding to the category*/
+	fill_discount_map(discount_category_map,
+						discount_categories);
+
+	/*discount the price of product according to the category it belongs*/
+	discount_product(products_vector,
+						discount_category_map);
 
 	/*print the product name and the price after discount*/
 	print_products(products_vector);
