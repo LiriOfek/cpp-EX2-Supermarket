@@ -42,6 +42,22 @@ void fill_products_vector(const char *products_name[],
 	}
 }
 
+void print_products(std::vector<Product> products_vector) {
+	/**
+	* @brief  print the products that in the vector of products
+	* @param  IN std::vector<Product> products_vector - the vector of products
+	* @return this function has no return value
+	* @author  Liri
+	*/
+	for (product n : products_vector) {
+		std::cout << n.name
+			<< PRINT_COST
+			<< n.price
+			<< DOLLAR
+			<< std::endl;
+	}
+}
+
 int main() {
 	/**
 	* @brief  initiate arrays of product features and
@@ -91,4 +107,7 @@ int main() {
 		products_category,
 		products_price,
 		products_vector);
+
+	/*print the product name and the price after discount*/
+	print_products(products_vector);
 }
