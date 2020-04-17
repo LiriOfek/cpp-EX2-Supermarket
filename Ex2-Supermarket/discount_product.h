@@ -19,7 +19,7 @@ const char* const DOLLAR = "$";
 const unsigned int HUNDRED = 100;
 
 void discount_product(std::vector<Product> &products_vector,
-	std::map<CATEGORY, double> discount_category_map);
+						std::map<CATEGORY, double> discount_category_map);
 /**
 * @brief  discount each product according to the category that has
 the biggest discount that the product belongs to
@@ -34,7 +34,7 @@ the biggest discount that the product belongs to
 */
 
 double biggest_discount_of_product(std::vector<CATEGORY> categories_vector,
-	std::map<CATEGORY, double> discount_category_map);
+									std::map<CATEGORY, double> discount_category_map);
 /**
 * @brief  find the biggest discount of product according to the catefories
 *		  it belongs to

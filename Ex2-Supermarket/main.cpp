@@ -2,12 +2,12 @@
 File Name: main.cpp
 Author: Liri (17/4/2020)
 Purpose: This file fill vector of products with products,
-		 discount each product corresponding to the category it belongs,
-		 and print the products that in the vector after the discount
+		 discount each product corresponding to the biggest discount
+		 category it belongs to, and print the products that in the
+		 vector after the discount
 \********************************************************/
 
 #include "discount_product.h"
-
 
 const unsigned int NUMBER_OF_PRODUCTS = 6;
 const unsigned int NUMBER_OF_CATEGORIES = 5;
@@ -16,16 +16,18 @@ enum {
 	SUCCESS,
 	FAIL
 };
+
 void fill_products_vector(const char *products_name[],
-							CATEGORY products_category[],
+							vector<vector<CATEGORY>> products_categories,
 							double products_price[],
 							std::vector<Product> &products_vector) {
 	/**
 	* @brief  fill the products vector with products contain name,
 	*		  category and price
 	* @param  IN const char *products_name[] - the array of products names
-	*		  IN CATEGORY products_category[] - the array of categories that
-	*		  corresponding to the names
+	*		  IN vector<vector<CATEGORY>> products_categories - matrix
+	*		  that each row represents the categories that belong to each
+	*		  product
 	*		  IN double products_price[] - the array of prices that
 	*		  corresponding to the names
 	*		  INOUT std::vector<Product> &products_vector - the vector of
@@ -37,7 +39,7 @@ void fill_products_vector(const char *products_name[],
 	*/
 	for (int index = 0; index < NUMBER_OF_PRODUCTS; ++index) {
 		products_vector.push_back({ products_name[index],
-			products_category[index],
+			products_categories[index],
 			products_price[index] });
 	}
 }
@@ -74,7 +76,7 @@ void fill_discount_map(std::map<CATEGORY, double> &discount_category_map,
 	*/
 	for (int index = 0; index < NUMBER_OF_CATEGORIES; ++index) {
 		discount_category_map.insert(std::make_pair((CATEGORY)index,
-										discount_categories[index]));
+			discount_categories[index]));
 	}
 }
 
@@ -92,24 +94,26 @@ int main() {
 
 	const char *products_name[] = { "white bread",
 									"orange juice",
-									"carrot",
+									"tomato",
 									"apple",
-									"banana",
+									"soup",
 									"white meat" };
 
-	/*category corresponding to each name in products*/
-	CATEGORY products_category[] = { BREAD,
-										DRINK,
-										VEGETABLES,
-										FRUITS,
-										FRUITS,
-										MEAT };
+	/*matrix of categories, such that each row represents the categories
+	that each product belongs to*/
+	vector<vector<CATEGORY>> products_category{ { BREAD },
+												{ DRINK, FRUITS },
+												{ VEGETABLES, FRUITS },
+												{ FRUITS },
+												{ VEGETABLES, DRINK, MEAT },
+												{ MEAT } };
+
 	/*price of each product*/
 	double products_price[] = { 30,
 								13,
 								6,
 								7,
-								10,
+								50,
 								100 };
 
 	/*discount of each category, in percents*/
@@ -138,4 +142,5 @@ int main() {
 
 	/*print the product name and the price after discount*/
 	print_products(products_vector);
+
 }
